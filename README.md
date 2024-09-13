@@ -4,11 +4,11 @@ Groover is an open source script for humanizing midi drums in the Reaper Midiedi
 
 ## Usesage:
 
-- Change the desired settings directly in the code or use Python's graphical user interface (goover.py) outside of Reaper to make changes.
+- Change the desired settings directly in the code or use Python gui (goover.py) outside of Reaper to make changes.
 - Select the notes you want in the midi editor and run the goover.lua script in Reaper.
 
 ## Settings:
-(in the groover.lua file for example, change the value of the "local timingVariation" variable)
+(in the groover.lua file change the value of the "local timingVariation" variable for example or use the gui )
 
 - maxVelocity: Drummer's maximum volume. (0-127)
 - minVelocity: Drummer's minimum volume. (0-127)
