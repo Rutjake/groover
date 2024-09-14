@@ -2,7 +2,7 @@
 
 Groover is an open source script for humanizing midi drums in the Reaper Midieditor.
 
-## Usesage:
+## How to use:
 
 - Change the desired settings directly in the code or use Python gui (goover.py) outside of Reaper to make changes.
 - Select the notes you want in the midi editor and run the goover.lua script in Reaper.
