@@ -20,13 +20,13 @@ local take = reaper.MIDIEditor_GetTake(hwnd)
     ]]
 
 --Asetukset (Säädä Tarpeen Mukaan)
-local timingVariation = 0
-local swingAmount = 0.9
-local handedness = "right"
-local handStrenght = 10
-local velocityVariation = 5
+local timingVariation = 5
+local swingAmount = 1.0
+local handedness = "Select"
+local handStrenght = 31
+local velocityVariation = 20
 local maxVelocity = 115
-local minVelocity = 90
+local minVelocity = 50
 local useHandednessFeature = False
 
 -- Msg(hwnd)
