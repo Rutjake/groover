@@ -11,6 +11,7 @@ Source code:
 - Download groover.py, groover.lua, preset.json, settings.json and README.md from root directory.
   (requires Python to be installed)
 
+Use:
 - Change the desired settings directly in the code or use Python gui (groover.py or groover.exe) outside of Reaper to make changes.
 - Select the notes you want in the midi editor and run the goover.lua script in Reaper.
 
