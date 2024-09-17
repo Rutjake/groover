@@ -226,7 +226,8 @@ def toggle_feature():
         new_state = "readonly"
     else:
         new_state = "disabled"
-
+        handedness_dropdown.set("Select")
+        
      # Tulostetaan muutokset
     #print(f"Muutetaan valikon tila '{current_state}' -> '{new_state}'")
 

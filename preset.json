@@ -13,7 +13,7 @@
         "Snare": {
             "timingVariation": 0, 
             "swingAmount": 0.5, 
-            "handedness": "right", 
+            "handedness": "Select", 
             "handStrenght": 10, 
             "velocityVariation": 10, 
             "maxVelocity": 115, 
@@ -43,7 +43,7 @@
         "Crash": {
             "timingVariation": 20, 
             "swingAmount": 0.1, 
-            "handedness": "right", 
+            "handedness": "Select", 
             "handStrenght": 10, 
             "velocityVariation": 15, 
             "maxVelocity": 115, 
