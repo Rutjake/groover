@@ -74,7 +74,7 @@ function swingAndVariation(take, swingAmount, timingVariation)
                 --Aloitus aika
             local secondsPerPPQ = 60 / tempo
             local startTimeInMs = realStartPpq * secondsPerPPQ
-
+            Msg("Start Time: " .. startTimeInMs)
             -- Swingi
             local swingOffset = swingAmount / 10 * math.sin(math.rad(startTimeInMs * 90)) * startTimeInMs / 10
     
@@ -87,7 +87,7 @@ function swingAndVariation(take, swingAmount, timingVariation)
 
             --Muutetaan Ms takaisin PPQ arvoksi 
             local newStartTimePPQ = newStartTime * 960 / (60 / tempo)
-
+            Msg(newStartTime)
             --Päivitetään nuotin aloitus aika
             reaper.MIDI_SetNote(take, i, 0, muted, newStartTimePPQ, endppqpos, chan, pitch, vel)
 
@@ -118,7 +118,7 @@ function hitVariation(take, velocityVariation, minVelocity, maxVelocity)
             -- Asetetaan Velocity
             local randomOffset = math.random(-velocityVariation, velocityVariation)
             local newVelocity = math.max(minVelocity, math.min(maxVelocity, newMaxVelocity + randomOffset))
-            Msg(" Vel: " .. vel .. " randomOffset: " .. randomOffset .. " New Velocity: " .. newVelocity)
+            --Msg(" Vel: " .. vel .. " randomOffset: " .. randomOffset .. " New Velocity: " .. newVelocity)
             
             -- Päivitetään Velocity
             reaper.MIDI_SetNote(take, i, selected, muted, startppqpos, endppqpos, chan, pitch, newVelocity)
@@ -188,8 +188,8 @@ end
 
 -- Ota vastaan muuttujien parametrit pythonista
 function set_parameters(timingVariation, swingAmount, handedness, handStrenght, velocityVariation, maxVelocity, minVelocity, useHandednessFeature)
-    Msg("Saadut parametrit: ")
-    Msg("timingVariation " .. timingVariation )
+    --Msg("Saadut parametrit: ")
+    --Msg("timingVariation " .. timingVariation )
     
     timingVariation = timingVariation
     swingAmount = swingAmount

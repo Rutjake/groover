@@ -6,6 +6,22 @@ from tkinter import ttk
 import json
 import re
 
+def openHelpWindow():
+    try:
+        with open("README.md", "r") as f:
+            readme_content = f.read()
+
+    except FileNotFoundError:
+        print("README.md tiedostoa ei löytynyt.")
+
+    help_window = tk.Toplevel(root)
+    help_window.title("Help")
+
+    help_text = tk.Text(help_window, wrap=tk.WORD)
+    help_text.insert(tk.END, "Manual:\n\n")
+    help_text.insert(tk.END, readme_content)
+    help_text.pack(fill="both", expand=True)
+
 def load_settings():
     try:
         with open('settings.json', 'r') as f:
@@ -128,12 +144,16 @@ root.title("Groover 1.1")
 separator = tk.Frame(root, height=2, bg="gray")
 separator.pack(fill="x", padx=20)
 
+# Luodaan ohjenappi
+help_button = tk.Button(root, text="Help", command=openHelpWindow)
+help_button.pack(side="top", anchor="ne", padx=(0, 20), pady=(20, 0))  # sijoittaa napin yläoikeaan kulmaan
+
 # Alasvetovalikko preseteille
 preset_label = tk.Label(root, text="Preset:", font=("Arial", 11))
 preset_label.pack(pady=(20, 0))
 preset_var = tk.StringVar(root)
 preset_options = ["Kick", "Snare", "Hihat/Ride", "Toms", "Crash"]
-preset_var.set("Valitse preset...")
+preset_var.set("Select Preset...")
 preset_dropdown = ttk.Combobox(root, textvariable=preset_var, values=preset_options, state='enabled')
 # Määritetään funktio, joka kutsutaan, kun valinta muuttuu
 preset_dropdown.bind('<<ComboboxSelected>>', lambda event: update_ui(loadPreset(preset_var.get())))
@@ -189,7 +209,7 @@ separator.pack(fill="x", padx=20)
 
 use_handedness_feature = tk.BooleanVar()
 
-checkbutton = tk.Checkbutton(root, text="Katisyys on/off", variable=use_handedness_feature, 
+checkbutton = tk.Checkbutton(root, text="Handedness on/off", variable=use_handedness_feature, 
                              onvalue=True, offvalue=False, 
                              command=lambda: toggle_feature(), font=("Arial", 11))
 checkbutton.pack(pady=(20, 0))
@@ -222,7 +242,7 @@ def update_handedness(*args):
 
 
 # Alasvetovalikko kätisyydelle
-handedness_label = tk.Label(root, text="Katisyys:", font=("Arial", 11))
+handedness_label = tk.Label(root, text="Handedness:", font=("Arial", 11))
 handedness_label.pack(pady=(20, 0))
 handedness_var = tk.StringVar(root)
 handedness_var.trace_add("write", update_handedness)
@@ -246,7 +266,7 @@ separator = tk.Frame(root, height=2, bg="gray")
 separator.pack(fill="x", padx=20)
 
 # Nappula, joka kutsuu saveSettingsAndRunScript-funktion
-save_button = tk.Button(root, text="Tallenna", font=("Arial", 11), command=lambda: saveSettingsAndRunScript(settings, root))
+save_button = tk.Button(root, text="Save Settings", font=("Arial", 11), command=lambda: saveSettingsAndRunScript(settings, root))
 save_button.pack(pady=20)
 
 # Aseta geometria ja näytä ikkuna
