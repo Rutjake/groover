@@ -138,7 +138,7 @@ def saveSettingsAndRunScript(settings, root):
 settings = load_settings()
 
 root = tk.Tk()
-root.title("Groover 1.1")
+root.title("Groover v1.1")
 
 #Käyttöliittymä elementit
 separator = tk.Frame(root, height=2, bg="gray")
