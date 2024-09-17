@@ -27,6 +27,8 @@ Tips:
 
 - Handedness is great for fills simulating the drum hit, but it can also be used in double bass drum parts to simulate different feet.
 
+- The handedness is also useful with the hi-hat and ride cymbal to make it groovy and human by adding accents in the right places. For example, right-handedness to the 8th beat and left-handedness to the 4th beat.
+
 - The presets are made to speed up the editing process, even though they are based on the feel of a well-known 80s metal drummer, they just are a good basis for editing.
 
 - In presets "Tom" setting are made for fills, preset works well in snare fills also.
