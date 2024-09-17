@@ -20,14 +20,14 @@ local take = reaper.MIDIEditor_GetTake(hwnd)
     ]]
 
 --Asetukset (Säädä Tarpeen Mukaan)
-local timingVariation = 5 -- 20 = +-20ms Eli Yhteensä 40ms
-local swingAmount = 0.1 -- Swingin määrä (0 = ei swingiä, 1 = täysi swing)
-local handedness = "right" -- Oletko oikea- vai vasenkätinen? (o/v:)"
-local handStrenght = 10 -- Voimakkuus Ero Käsien Välillä
-local velocityVariation = 10 -- Kuinka Paljon Varioidaan +-10 Eli Yhtensä 20
-local maxVelocity = 115 -- "Mikä on rumpalin maksimi voimakkuus (0-127)?"
-local minVelocity = 90 -- "Rumpalin minimi voimakkuus (0-127)"
-local useHandednessFeature = false -- Otetaan käyttöön kätisyys (true = käytössä/false = ei käytössä)
+local timingVariation = 0
+local swingAmount = 0.9
+local handedness = "right"
+local handStrenght = 10
+local velocityVariation = 5
+local maxVelocity = 115
+local minVelocity = 90
+local useHandednessFeature = False
 
 -- Msg(hwnd)
 -- Msg(take)
@@ -76,7 +76,7 @@ function swingAndVariation(take, swingAmount, timingVariation)
             local startTimeInMs = realStartPpq * secondsPerPPQ
             Msg("Start Time: " .. startTimeInMs)
             -- Swingi
-            local swingOffset = swingAmount / 10 * math.sin(math.rad(startTimeInMs * 90)) * startTimeInMs / 10
+            local swingOffset = swingAmount / 100 * math.sin(math.rad(startTimeInMs * 90)) * startTimeInMs / 10
     
             -- Timing Variaatio
             local randomOffset = math.random(-timingVariation, timingVariation) / 1000
