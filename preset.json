@@ -1,0 +1,54 @@
+{
+    "presets": {
+        "Kick": {
+            "timingVariation": 80, 
+            "swingAmount": 0.1, 
+            "handedness": "right", 
+            "handStrenght": 10, 
+            "velocityVariation": 10, 
+            "maxVelocity": 115, 
+            "minVelocity": 50, 
+            "useHandednessFeature": true
+        },
+        "Snare": {
+            "timingVariation": 5, 
+            "swingAmount": 0.1, 
+            "handedness": "right", 
+            "handStrenght": 10, 
+            "velocityVariation": 10, 
+            "maxVelocity": 115, 
+            "minVelocity": 50, 
+            "useHandednessFeature": false
+        },
+        "Hihat/Ride": {
+            "timingVariation": 5, 
+            "swingAmount": 0.1, 
+            "handedness": "right", 
+            "handStrenght": 10, 
+            "velocityVariation": 10, 
+            "maxVelocity": 115, 
+            "minVelocity": 50, 
+            "useHandednessFeature": true
+        },
+        "Toms": {
+            "timingVariation": 5, 
+            "swingAmount": 0.1, 
+            "handedness": "right", 
+            "handStrenght": 10, 
+            "velocityVariation": 10, 
+            "maxVelocity": 115, 
+            "minVelocity": 50, 
+            "useHandednessFeature": true
+        },
+        "Crash": {
+            "timingVariation": 20, 
+            "swingAmount": 0.1, 
+            "handedness": "right", 
+            "handStrenght": 10, 
+            "velocityVariation": 15, 
+            "maxVelocity": 115, 
+            "minVelocity": 50, 
+            "useHandednessFeature": false
+        }
+    }
+}

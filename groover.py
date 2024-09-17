@@ -4,7 +4,6 @@ import tkinter as tk
 import tkinter.messagebox as messagebox
 from tkinter import ttk
 import json
-import subprocess
 import re
 
 def load_settings():
@@ -22,6 +21,34 @@ def load_settings():
                 "minVelocity": 90,
                 "useHandednessFeature": False
                 }
+
+def loadPreset(preset_name):
+            
+            try:
+                with open('preset.json', 'r') as f:
+                    data = json.load(f)
+                    return data["presets"][preset_name]
+            except (FileNotFoundError, KeyError):
+                print("Asetuksia ei löytynyt")
+                return {"timingVariation": 5,
+                        "swingAmount": 0.1,
+                        "handedness": "right",
+                        "handStrenght": 10,
+                        "velocityVariation": 10,
+                        "maxVelocity": 115,
+                        "minVelocity": 90,
+                        "useHandednessFeature": False
+                        }
+
+def update_ui(settings):
+    minVelocity_scale.set(settings["minVelocity"])
+    maxVelocity_scale.set(settings["maxVelocity"])
+    velocityVariation_scale.set(settings["velocityVariation"])
+    timingVariation_scale.set(settings["timingVariation"])
+    swingAmount_scale.set(settings["swingAmount"])
+    handedness_var.set(settings["handedness"])
+    handStrenght_scale.set(settings["handStrenght"])
+    use_handedness_feature.set(settings["useHandednessFeature"])
 
 def saveSettingsAndRunScript(settings, root):
     # Lue asetukset käyttöliittymästä
@@ -91,26 +118,6 @@ def saveSettingsAndRunScript(settings, root):
         print(f"Asetuksien tallennus epäonnistui: {e}")
         tk.messagebox.showerror("Virhe", "Asetuksien tallennus epäonnistui. Tarkista asetukset ja yritä uudelleen.")
 
-    """
-    try:
-        subprocess.Popen(["lua", "groover.lua", 
-                        str(settings["timingVariation"]), 
-                        str(settings["swingAmount"]),
-                        str(settings["handedness"]),
-                        str(settings["handStrenght"]),
-                        str(settings["velocityVariation"]),
-                        str(settings["maxVelocity"]),
-                        str(settings["minVelocity"]),
-                        str(settings["useHandednessFeature"])
-                        ])
-    except subprocess.CalledProcessError as e:
-        print(f"Lua-skriptin suoritus epäonnistui: {e}")
-        # Näytetään käyttäjälle virheilmoitus
-        tk.messagebox.showerror("Virhe", "Skriptin suoritus epäonnistui. Tarkista asetukset ja yritä uudelleen.")
-    except Exception as e:
-        print(f"Virhe tapahtui: {e}")
-        tk.messagebox.showerror("Virhe", "Yllättävä virhe tapahtui. Ota yhteyttä kehittäjään.")
-    """
 # Lataa asennukset ennen käyttöliittymän luontia
 settings = load_settings()
 
@@ -118,6 +125,20 @@ root = tk.Tk()
 root.title("Groover")
 
 #Käyttöliittymä elementit
+separator = tk.Frame(root, height=2, bg="gray")
+separator.pack(fill="x", padx=20)
+
+# Alasvetovalikko preseteille
+preset_label = tk.Label(root, text="Preset:", font=("Arial", 11))
+preset_label.pack(pady=(20, 0))
+preset_var = tk.StringVar(root)
+preset_options = ["Kick", "Snare", "Hihat/Ride", "Toms", "Crash"]
+preset_var.set("Valitse preset...")
+preset_dropdown = ttk.Combobox(root, textvariable=preset_var, values=preset_options, state='enabled')
+# Määritetään funktio, joka kutsutaan, kun valinta muuttuu
+preset_dropdown.bind('<<ComboboxSelected>>', lambda event: update_ui(loadPreset(preset_var.get())))
+preset_dropdown.pack(pady=(0, 20))
+
 separator = tk.Frame(root, height=2, bg="gray")
 separator.pack(fill="x", padx=20)
 
@@ -229,5 +250,5 @@ save_button = tk.Button(root, text="Tallenna", font=("Arial", 11), command=lambd
 save_button.pack(pady=20)
 
 # Aseta geometria ja näytä ikkuna
-root.geometry("300x750")
+root.geometry("400x900")
 root.mainloop()
