@@ -16,7 +16,7 @@ Use:
 - Select the notes you want in the midi editor and run the goover.lua script in Reaper.
 
 ## Settings:
-(in the groover.lua file change the value of the "local timingVariation" variable for example or use the gui )
+(in the groover.lua file change the value of the ("local timingVariation") variable for example or use the gui )
 
 - maxVelocity: Drummer's maximum volume. (0-127)
 - minVelocity: Drummer's minimum volume. (0-127)
@@ -26,3 +26,9 @@ Use:
 - useHandednessFeature: Use of handedness. (true = on use, false = not in use).
 - handedness: Are you right- or left-handed? (right/left)
 - handSrenght: Strength Difference Between Hands.
+
+Tips:
+
+- Handedness is great for fills simulating the drum hit, but it can also be used in double bass drum parts to simulate different feet.
+
+- The presets are made to speed up the editing process.

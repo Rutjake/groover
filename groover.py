@@ -5,10 +5,12 @@ import tkinter.messagebox as messagebox
 from tkinter import ttk
 import json
 import re
+import webbrowser
 
 def openHelpWindow():
+
     try:
-        with open("README.md", "r") as f:
+        with open("help.md", "r") as f:
             readme_content = f.read()
 
     except FileNotFoundError:
@@ -17,10 +19,11 @@ def openHelpWindow():
     help_window = tk.Toplevel(root)
     help_window.title("Help")
 
-    help_text = tk.Text(help_window, wrap=tk.WORD)
+    help_text = tk.Text(help_window, wrap=tk.WORD, padx=20, pady=20)
     help_text.insert(tk.END, "Manual:\n\n")
     help_text.insert(tk.END, readme_content)
     help_text.pack(fill="both", expand=True)
+
 
 def load_settings():
     try:
@@ -40,23 +43,24 @@ def load_settings():
 
 def loadPreset(preset_name):
             
-            try:
-                with open('preset.json', 'r') as f:
-                    data = json.load(f)
-                    return data["presets"][preset_name]
-            except (FileNotFoundError, KeyError):
-                print("Asetuksia ei löytynyt")
-                return {"timingVariation": 5,
-                        "swingAmount": 0.1,
-                        "handedness": "right",
-                        "handStrenght": 10,
-                        "velocityVariation": 10,
-                        "maxVelocity": 115,
-                        "minVelocity": 90,
-                        "useHandednessFeature": False
-                        }
+    try:
+        with open('preset.json', 'r') as f:
+            data = json.load(f)
+            return data["presets"][preset_name]
+    except (FileNotFoundError, KeyError):
+        print("Asetuksia ei löytynyt")
+        return {"timingVariation": 5,
+                "swingAmount": 0.1,
+                "handedness": "right",
+                "handStrenght": 10,
+                "velocityVariation": 10,
+                "maxVelocity": 115,
+                "minVelocity": 90,
+                "useHandednessFeature": False
+                }
 
 def update_ui(settings):
+
     minVelocity_scale.set(settings["minVelocity"])
     maxVelocity_scale.set(settings["maxVelocity"])
     velocityVariation_scale.set(settings["velocityVariation"])
@@ -65,7 +69,7 @@ def update_ui(settings):
     handedness_var.set(settings["handedness"])
     handStrenght_scale.set(settings["handStrenght"])
     use_handedness_feature.set(settings["useHandednessFeature"])
-
+    
 def saveSettingsAndRunScript(settings, root):
     # Lue asetukset käyttöliittymästä
     try:
@@ -216,25 +220,16 @@ checkbutton.pack(pady=(20, 0))
 
 def toggle_feature():
     global settings
-    #print(settings)
+    
     settings["useHandednessFeature"] = use_handedness_feature.get()
-    #print(settings)
-    # Päivitetään Alasvetovalikon Tila
-    #handedness_dropdown.state(["readonly"] if use_handedness_feature.get() else ["disabled"])
-    current_state = handedness_dropdown.state()
+
     if settings["useHandednessFeature"] == True:
         new_state = "readonly"
     else:
         new_state = "disabled"
         handedness_dropdown.set("Select")
-        
-     # Tulostetaan muutokset
-    #print(f"Muutetaan valikon tila '{current_state}' -> '{new_state}'")
 
     handedness_dropdown.config(state=new_state)
-
-    # Tulostetaan uusi tila vielä kerran varmistukseksi
-    #print(f"Uusi valikon tila: {handedness_dropdown.state()}")
 
 def update_handedness(*args):
     global settings
