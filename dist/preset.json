@@ -1,8 +1,8 @@
 {
     "presets": {
         "Kick": {
-            "timingVariation": 80, 
-            "swingAmount": 0.1, 
+            "timingVariation": 0, 
+            "swingAmount": 0.5, 
             "handedness": "right", 
             "handStrenght": 10, 
             "velocityVariation": 10, 
@@ -11,8 +11,8 @@
             "useHandednessFeature": true
         },
         "Snare": {
-            "timingVariation": 5, 
-            "swingAmount": 0.1, 
+            "timingVariation": 0, 
+            "swingAmount": 0.5, 
             "handedness": "right", 
             "handStrenght": 10, 
             "velocityVariation": 10, 
@@ -21,8 +21,8 @@
             "useHandednessFeature": false
         },
         "Hihat/Ride": {
-            "timingVariation": 5, 
-            "swingAmount": 0.1, 
+            "timingVariation": 0, 
+            "swingAmount": 0.8, 
             "handedness": "right", 
             "handStrenght": 10, 
             "velocityVariation": 10, 
@@ -32,7 +32,7 @@
         },
         "Toms": {
             "timingVariation": 5, 
-            "swingAmount": 0.1, 
+            "swingAmount": 1.0, 
             "handedness": "right", 
             "handStrenght": 10, 
             "velocityVariation": 10, 
