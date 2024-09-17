@@ -27,7 +27,7 @@ Use:
 - handedness: Are you right- or left-handed? (right/left)
 - handSrenght: Strength Difference Between Hands.
 
-##Tips:
+## Tips:
 
 Handedness is great for fills simulating the drum hit, but it can also be used in double bass drum parts to simulate different feet.
 
