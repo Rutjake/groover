@@ -1,5 +1,5 @@
 # Groover v1.1
-
+![Screenshot of Groover](/screen/GrooverGui.JPG)
 Groover is an open source script for humanizing midi drums in the Reaper Midi editor.
 
 ## How to use:
