@@ -1,4 +1,4 @@
-# Version 1.0
+# Version 1.1
 
 import tkinter as tk
 import tkinter.messagebox as messagebox
@@ -57,7 +57,15 @@ def loadPreset(preset_name):
                 "maxVelocity": 115,
                 "minVelocity": 90,
                 "useHandednessFeature": False
-                }
+               }
+    
+def load_presets_from_json(file_path):
+    try:
+        with open(file_path, 'r') as f:
+            data = json.load(f)
+            return list(data['presets'].keys())
+    except (FileNotFoundError, KeyError):
+        return ("No Presets")
 
 def update_ui(settings):
 
@@ -141,6 +149,10 @@ def saveSettingsAndRunScript(settings, root):
 # Lataa asennukset ennen käyttöliittymän luontia
 settings = load_settings()
 
+# Latataan presetit JSON-tiedostosta
+preset_options = load_presets_from_json("preset.json")
+
+
 root = tk.Tk()
 root.title("Groover v1.1")
 
@@ -156,9 +168,10 @@ help_button.pack(side="top", anchor="ne", padx=(0, 20), pady=(20, 0))  # sijoitt
 preset_label = tk.Label(root, text="Preset:", font=("Arial", 11))
 preset_label.pack(pady=(20, 0))
 preset_var = tk.StringVar(root)
-preset_options = ["Drumset", "Kick", "Snare", "Hihat/Ride", "Toms", "Crash"]
 preset_var.set("Select Preset...")
 preset_dropdown = ttk.Combobox(root, textvariable=preset_var, values=preset_options, state='enabled')
+preset_dropdown.pack(pady=10)
+
 # Määritetään funktio, joka kutsutaan, kun valinta muuttuu
 preset_dropdown.bind('<<ComboboxSelected>>', lambda event: update_ui(loadPreset(preset_var.get())))
 preset_dropdown.pack(pady=(0, 20))
