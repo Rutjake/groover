@@ -1,4 +1,4 @@
-# Groover v1.1
+# Groover v1.2
 <img src="/screen/GrooverGui.JPG" height="400">
 Groover is an open source script for humanizing midi drums in the Reaper Midi editor.
 
@@ -28,6 +28,8 @@ Use:
 - handSrenght: Strength Difference Between Hands.
 
 ## Tips:
+
+- Use a Drumkit preset for the entire drum track.
 
 - Handedness is great for fills simulating the drum hit, but it can also be used in double bass drum parts to simulate different feet.
 
