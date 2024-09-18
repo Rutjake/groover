@@ -3,7 +3,7 @@
         "Drumset": {
             "timingVariation": 4, 
             "swingAmount": 0.7, 
-            "handedness": "right", 
+            "handedness": "Select", 
             "handStrenght": 10, 
             "velocityVariation": 0, 
             "maxVelocity": 115, 
@@ -13,7 +13,7 @@
         "Kick": {
             "timingVariation": 0, 
             "swingAmount": 0.1, 
-            "handedness": "right", 
+            "handedness": "Select", 
             "handStrenght": 10, 
             "velocityVariation": 5, 
             "maxVelocity": 115, 

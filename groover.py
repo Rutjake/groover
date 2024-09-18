@@ -42,7 +42,7 @@ def load_settings():
                 }
 
 def loadPreset(preset_name):
-            
+
     try:
         with open('preset.json', 'r') as f:
             data = json.load(f)
@@ -59,7 +59,9 @@ def loadPreset(preset_name):
                 "useHandednessFeature": False
                }
     
+
 def load_presets_from_json(file_path):
+
     try:
         with open(file_path, 'r') as f:
             data = json.load(f)
@@ -240,6 +242,9 @@ def toggle_feature():
         new_state = "readonly"
     else:
         new_state = "disabled"
+     
+    handedness_dropdown.config(state=new_state)
+    if new_state == "disabled":
         handedness_dropdown.set("Select")
 
     handedness_dropdown.config(state=new_state)
