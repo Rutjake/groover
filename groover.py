@@ -1,4 +1,4 @@
-# Version 1.1
+# Version 1.2
 
 import tkinter as tk
 import tkinter.messagebox as messagebox
@@ -46,7 +46,13 @@ def loadPreset(preset_name):
     try:
         with open('preset.json', 'r') as f:
             data = json.load(f)
-            return data["presets"][preset_name]
+            preset =  data["presets"][preset_name]
+
+            global use_handedness_feature
+            use_handedness_feature.set(preset["useHandednessFeature"])
+            update_handedness_dropdown()
+            return preset
+        
     except (FileNotFoundError, KeyError):
         print("Asetuksia ei löytynyt")
         return {"timingVariation": 5,
@@ -68,6 +74,13 @@ def load_presets_from_json(file_path):
             return list(data['presets'].keys())
     except (FileNotFoundError, KeyError):
         return ("No Presets")
+    
+def update_handedness_dropdown():
+    global handedness_dropdown
+    if use_handedness_feature.get():
+        handedness_dropdown.config(state='normal')
+    else:
+        handedness_dropdown.config(state='disabled')
 
 def update_ui(settings):
 
@@ -154,9 +167,8 @@ settings = load_settings()
 # Latataan presetit JSON-tiedostosta
 preset_options = load_presets_from_json("preset.json")
 
-
 root = tk.Tk()
-root.title("Groover v1.1")
+root.title("Groover v1.2")
 
 #Käyttöliittymä elementit
 separator = tk.Frame(root, height=2, bg="gray")
