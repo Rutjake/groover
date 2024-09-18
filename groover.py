@@ -156,7 +156,7 @@ help_button.pack(side="top", anchor="ne", padx=(0, 20), pady=(20, 0))  # sijoitt
 preset_label = tk.Label(root, text="Preset:", font=("Arial", 11))
 preset_label.pack(pady=(20, 0))
 preset_var = tk.StringVar(root)
-preset_options = ["Kick", "Snare", "Hihat/Ride", "Toms", "Crash"]
+preset_options = ["Drumset", "Kick", "Snare", "Hihat/Ride", "Toms", "Crash"]
 preset_var.set("Select Preset...")
 preset_dropdown = ttk.Combobox(root, textvariable=preset_var, values=preset_options, state='enabled')
 # Määritetään funktio, joka kutsutaan, kun valinta muuttuu

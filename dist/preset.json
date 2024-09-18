@@ -1,5 +1,15 @@
 {
     "presets": {
+        "Drumset": {
+            "timingVariation": 4, 
+            "swingAmount": 0.7, 
+            "handedness": "right", 
+            "handStrenght": 10, 
+            "velocityVariation": 0, 
+            "maxVelocity": 115, 
+            "minVelocity": 50, 
+            "useHandednessFeature": false
+        },
         "Kick": {
             "timingVariation": 0, 
             "swingAmount": 0.1, 
